@@ -16,7 +16,7 @@
         return child;
       };
 
-  require("coffee-script");
+//   require("coffee-script");
   var assert = require('assert');
   var _ = require("lodash");
   var Logic = require("../query");

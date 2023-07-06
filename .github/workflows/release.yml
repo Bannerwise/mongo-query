@@ -1,0 +1,15 @@
+name: Release
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+  release-on-push:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: rymndhng/release-on-push-action@master # https://github.com/marketplace/actions/tag-release-on-push-action
+        with:
+          bump_version_scheme: patch

@@ -3,6 +3,9 @@ Query
 
 A lightweight API to query Javascript arrays using MongoDB syntax in the browser and Node.js.
 
+> Last used with/on NodeJS v18.12.1
+
+I've been using https://www.toptal.com/developers/javascript-minifier to minify.
 
 Installation
 ============
@@ -17,6 +20,7 @@ define(['query', function(Query) { ... my script ... });
 ```
 
 #### Server side (node.js) installation
+
 You can install with NPM: `npm install protobi/query`
 `query = require("query");`
 
