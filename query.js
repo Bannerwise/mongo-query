@@ -223,6 +223,91 @@
              * Partial implementation of MongoDB aggregate expressions
              */
             agg: {
+                $lt: function (row, operands, getter) {
+                    if (operands.length != 2) {
+                        throw new Error('$lt requires exactly two operands');
+                    }
+
+                    // Get the values for the operands
+                    var val1 = _get(row, operands[0], getter);
+                    var val2 = _get(row, operands[1], getter);
+
+                    console.log({ val1, val2 });
+
+                    // Check if both values are numbers
+                    if (typeof val1 !== 'number' || typeof val2 !== 'number') {
+                        throw new Error('Both operands of $lt must be numbers');
+                    }
+
+                    // Return whether the first value is less than the second
+                    return val1 < val2;
+                },
+                $eq: function (row, operands, getter) {
+                    if (operands.length != 2) {
+                        throw new Error('$eq requires exactly two operands');
+                    }
+
+                    var val1 = _get(row, operands[0], getter);
+                    var val2 = _get(row, operands[1], getter);
+
+                    return val1 === val2;
+                },
+
+                $ne: function (row, operands, getter) {
+                    if (operands.length != 2) {
+                        throw new Error('$ne requires exactly two operands');
+                    }
+
+                    var val1 = _get(row, operands[0], getter);
+                    var val2 = _get(row, operands[1], getter);
+
+                    return val1 !== val2;
+                },
+
+                $lte: function (row, operands, getter) {
+                    if (operands.length != 2) {
+                        throw new Error('$lte requires exactly two operands');
+                    }
+
+                    var val1 = _get(row, operands[0], getter);
+                    var val2 = _get(row, operands[1], getter);
+
+                    if (typeof val1 !== 'number' || typeof val2 !== 'number') {
+                        throw new Error('Both operands of $lte must be numbers');
+                    }
+
+                    return val1 <= val2;
+                },
+
+                $gt: function (row, operands, getter) {
+                    if (operands.length != 2) {
+                        throw new Error('$gt requires exactly two operands');
+                    }
+
+                    var val1 = _get(row, operands[0], getter);
+                    var val2 = _get(row, operands[1], getter);
+
+                    if (typeof val1 !== 'number' || typeof val2 !== 'number') {
+                        throw new Error('Both operands of $gt must be numbers');
+                    }
+
+                    return val1 > val2;
+                },
+
+                $gte: function (row, operands, getter) {
+                    if (operands.length != 2) {
+                        throw new Error('$gte requires exactly two operands');
+                    }
+
+                    var val1 = _get(row, operands[0], getter);
+                    var val2 = _get(row, operands[1], getter);
+
+                    if (typeof val1 !== 'number' || typeof val2 !== 'number') {
+                        throw new Error('Both operands of $gte must be numbers');
+                    }
+
+                    return val1 >= val2;
+                },
                 $sum: function (row, operands, getter) {
                     var sum = 0;
                     for (var i = 0; i < operands.length; i++) {
