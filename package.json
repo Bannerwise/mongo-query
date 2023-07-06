@@ -1,41 +1,38 @@
 {
-  "name": "@bannerwise/mongo-query",
-  "version": "0.7.2",
-  "description": "MongoDB Javascript arrays logic",
-  "main": "query.js",
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {
-    "lodash": "^4.17.15",
-    "mocha": "^10.2.0"
-  },
-  "devDependencies": {
-    "backbone": "^1.4.0",
-    "@bannerwise/configs": "0.0.2"
-  },
-  "scripts": {
-    "test": "mocha",
-    "minify": "cat query.js | uglifyjs > query.min.js",
-    "all": "npm run test && npm run minify"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/protobi/query.git"
-  },
-  "keywords": [
-    "MongoDB",
-    "query",
-    "javascript",
-    "array"
-  ],
-  "author": "Pieter Sheth-Voss, PhD",
-  "license": "MITNFA",
-  "bugs": {
-    "url": "https://github.com/protobi/query/issues"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-},
-  "homepage": "https://github.com/protobi/query"
+    "name": "@bannerwise/mongo-query",
+    "version": "0.0.1",
+    "description": "MongoDB Javascript arrays logic",
+    "main": "query.js",
+    "directories": {
+        "test": "test"
+    },
+    "dependencies": {
+        "lodash": "^4.17.15",
+        "mocha": "^10.2.0"
+    },
+    "devDependencies": {
+        "backbone": "^1.4.0",
+        "@bannerwise/configs": "0.0.2"
+    },
+    "scripts": {
+        "test": "mocha",
+        "minify": "cat query.js | uglifyjs > query.min.js",
+        "all": "npm run test && npm run minify"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/protobi/query.git"
+    },
+    "keywords": [
+        "MongoDB",
+        "query",
+        "javascript",
+        "array"
+    ],
+    "author": "Pieter Sheth-Voss, PhD",
+    "license": "MITNFA",
+    "bugs": {
+        "url": "https://github.com/protobi/query/issues"
+    },
+    "homepage": "https://github.com/protobi/query"
 }
