@@ -1,0 +1,22 @@
+{
+    "editor.rulers": [
+        {
+            "column": 130,
+            "color": "#41505e"
+        },
+        {
+            "column": 160,
+            "color": "#2B3743"
+        }
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#2B90D9",
+        "statusBarItem.remoteBackground": "#2B90D9",
+        "statusBar.foreground": "#ffffff"
+    },
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+}

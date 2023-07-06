@@ -16,3 +16,4 @@ node_modules
 # Users Environment Variables
 .IDEA
 .DS_Store
+.npmrc
