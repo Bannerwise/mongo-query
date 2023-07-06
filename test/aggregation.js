@@ -115,4 +115,25 @@ describe("Count satisfied constraints", function () {
     )
 
   })
+
+  it('lt', function () {
+    var rows = [
+      {price: 2000, sale_price: 1000, res: 'yes' },
+      {price: 1000, sale_price: 2000, res: 'no' },
+    ]
+
+    var r1 = Query.query(rows, JSON.parse('{"$and":[{"$and":[{"price":{"$exists":true,"$ne":null},"sale_price":{"$exists":true,"$ne":null}} ,{"$expr":{"$lt":["$sale_price","$price"]}} ]}]}'))
+    console.log('__', r1)
+    assert.deepEqual(
+        r1,
+        [
+            {
+                "price": 2000,
+                "res": "yes",
+                "sale_price": 1000,
+            }
+        ]
+    )
+
+  })
 })

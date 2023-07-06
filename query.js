@@ -205,17 +205,25 @@
                 var result = true;
 
                 for (var key in expr) {
-                    if (this.rhs[key]) {
-                        var parts = expr[key];
-                        var constraint = parts[0];
-                        var aggrexp = parts[1];
-
-                        var operation = Object.keys(aggrexp)[0];
-                        var operands = aggrexp[operation];
-                        var value = this.agg[operation](row, operands, getter);
-                        result = result && this.rhs[key](value, constraint);
+                    if (this.agg[key]) {
+                        var attr = expr[key];
+                        var value1 = Number(row[attr[0].slice(1, attr[0].length)]);
+                        var value2 = Number(row[attr[1].slice(1, attr[1].length)]);
+                        var value = this.agg[key](row, [value1, value2], getter);
+                        result = result && value;
                     }
                 }
+                // ? The old implementation
+                //  else if (this.rhs[key]) {
+                //     var parts = expr[key];
+                //     var constraint = parts[0];
+                //     var aggrexp = parts[1];
+
+                //     var operation = Object.keys(aggrexp)[0];
+                //     var operands = aggrexp[operation];
+                //     var value = this.agg[operation](row, operands, getter);
+                //     result = result && this.rhs[key](value, constraint);
+                // }
                 return result;
             },
 
