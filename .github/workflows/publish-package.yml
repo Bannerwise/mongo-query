@@ -1,21 +1,32 @@
-name: Publish Bannerwise Package
+name: Publish Package
 
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
 
 jobs:
-  publish-grp:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-          scope: "bannerwise"
-      - run: npm install
-      - run: npm publish
+    publish-to-gcr:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+                  registry-url: https://npm.pkg.github.com/
+                  scope: 'bannerwise'
+            - run: npm install --production
+            - run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    create-gh-release:
+        needs: [publish-to-gcr]
+        runs-on: ubuntu-latest
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        steps:
+            - uses: rymndhng/release-on-push-action@master # https://github.com/marketplace/actions/tag-release-on-push-action
+              with:
+                  bump_version_scheme: patch
+                  use_github_release_notes: true
