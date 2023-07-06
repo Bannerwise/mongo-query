@@ -1,6 +1,6 @@
 {
     "name": "@bannerwise/mongo-query",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "MongoDB Javascript arrays logic",
     "main": "query.js",
     "directories": {
