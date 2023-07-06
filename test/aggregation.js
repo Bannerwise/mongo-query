@@ -100,9 +100,10 @@ describe("Count satisfied constraints", function () {
       $and: [
         {
           $expr: {
-            $lt: [10, {$min: ["x0", "x1", "x2"]}]
+            // $lt: [10, {$min: ["x0", "x1", "x2"]}]
+            $lt: ["$sale_price", "$price"]
           }
-        }, 
+        },
         {
           a: {$not: 0}
         }
@@ -136,4 +137,26 @@ describe("Count satisfied constraints", function () {
     )
 
   })
+
+//   it.only('lt', function () {
+//     var rows = [
+//       {price: 2.90, sale_price: 5, res: 'yes' },
+//       {price: 2.80, sale_price: 5, res: 'no' },
+//     ]
+
+//     const query = '{"$and":[{"price":{"$regex":"2.90","$options":"i"}}]}'
+//     var r1 = Query.query(rows, JSON.parse(query));
+//     console.log('__', r1)
+//     assert.equal(
+//         r1,
+//         [
+//             {
+//                 "price": 2.90,
+//                 "res": "yes",
+//                 "sale_price": 5,
+//             }
+//         ]
+//     )
+
+//   })
 })
